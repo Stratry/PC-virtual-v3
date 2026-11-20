@@ -82,7 +82,7 @@ jobs:
       - name: Create RDP User
         shell: pwsh
         run: |
-          # Generar contraseña aleatoria robusta (20 caracteres)
+          # Generar contraseña aleatoria robusta (6 caracteres)
           $upper = (65..90) | ForEach-Object { [char]$_ }
           $lower = (97..122) | ForEach-Object { [char]$_ }
           $digits = (48..57) | ForEach-Object { [char]$_ }
@@ -93,16 +93,15 @@ jobs:
             $upper | Get-Random
             $upper | Get-Random
             $lower | Get-Random
-            $lower | Get-Random
             $digits | Get-Random
             $digits | Get-Random
             $symbols | Get-Random
-            $symbols | Get-Random
+            
           )
           
-          # Completar hasta 20 caracteres aleatorios
+          # Completar hasta 6 caracteres aleatorios
           $allChars = $upper + $lower + $digits + $symbols
-          while ($password.Count -lt 20) {
+          while ($password.Count -lt 6) {
             $password += $allChars | Get-Random
           }
           
